@@ -424,10 +424,12 @@ function snapBubble() {
         cluster = findCluster(gridpos.x, gridpos.y, true, true, false);
         nearCluster = findNearCluster(gridpos.x, gridpos.y, true, true, false);
 
-        statusNearClusterAnim();
-        updatePotisionTitle();
-
-        if (cluster.length >= 3) {
+        if(cluster.length <3){
+            statusNearClusterAnim();
+            updatePotisionTitle();
+        }else{
+            statusNearClusterAnimRemove();
+            // updatePotisionTitle();
             setGameState(gamestates.idle);
             dropCluster = findDropCluster(cluster);
             TweenMax.delayedCall(0.1, function(){
@@ -523,6 +525,66 @@ function findNearCluster(tx, ty, matchtype, reset, skipremoved) {
     return foundcluster;
 }
 
+function statusNearClusterAnimRemove(){
+    renderTiles();
+    if(nearCluster === undefined || nearCluster.length === 0) return;
+    var direct = {x:0, y:0}; // 1: top, left;  2: top-right; 3: bottom-left; 4: bottom-right
+    var startCluster = nearCluster[0];
+    var movie = startCluster.movie;
+    if(movie.x > player.bubble.movie.x) direct = {x:1,y:-1};
+    else  direct = {x:-1,y:-1};
+    var newx = movie.x + direct.x * (Math.abs(0 - 4) * 0.8);
+    var newy = movie.y + direct.y * (Math.abs(0 - 4) * 0.8);
+
+    var nx = movie.x + (-direct.x) * (Math.abs(0 - 4) * 0.6);
+    var ny = movie.y + (-direct.y) * (Math.abs(0 - 4) * 0.6);
+
+    movie.tempX = movie.x;
+    movie.tempY = movie.y;
+    TweenMax.to(movie, 0.1, {x: newx, y: newy,onComplete:function(){
+        movie.disable = true;
+    }})
+    // TweenMax.to(movie, 0.3, {x: nx, y: ny, delay: 0.1});
+    // TweenMax.to(movie, 0.4, {x: movie.tempX, y: movie.tempY, delay: 0.4, ease:"power3.easeOut"});
+
+    movie.mcOuter.visible = true;
+    movie.mcOuter.alpha = 1;
+
+    // TweenMax.to(movie.mcOuter,0.05, {alpha:1, onComplete:function(){
+    //     TweenMax.to(movie.mcOuter, 0.05, {alpha:0, onComplete:function(){
+    //         movie.mcOuter.visible = false;
+    //     }.bind(this)})
+    // }.bind(this)})
+
+    for(var i = 1; i< nearCluster.length;i++) {
+        var mc = nearCluster[i];
+        var vx = startCluster.x - mc.x;
+        var vy = startCluster.y - mc.y;
+        if(vx ===0) vx = 1;
+        if(vx > 0 && vy > 0) direct = {x:-1,y:-1};
+        if(vx > 0 && vy < 0) direct = {x:-1,y:1};
+        if(vx < 0 && vy > 0) direct = {x:1,y:-1};
+        if(vx < 0 && vy < 0) direct = {x:1,y:1};
+
+        var near = (Math.abs(vx) > Math.abs(vy)) ? Math.abs(vx) : Math.abs(vy);
+        
+        // console.log("x:  " + vx + "  y:  " + vy + "  " + direct + "  " + near);
+        var newx = mc.movie.x + direct.x * (Math.abs(near - 4) * 0.8);
+        var newy = mc.movie.y + direct.y * (Math.abs(near - 4) * 0.8);
+
+        var nx = mc.movie.x + (-direct.x) * (Math.abs(near - 4) * 0.6);
+        var ny = mc.movie.y + (-direct.y) * (Math.abs(near - 4) * 0.6);
+
+        mc.movie.tempX = mc.movie.x;
+        mc.movie.tempY = mc.movie.y;
+
+        TweenMax.to(mc.movie, 0.1, {x: newx, y: newy, onComplete:function(m){
+            m.movie.disable = true;
+        }, onCompleteParams:[mc]})
+        // TweenMax.to(mc.movie, 0.3, {x: nx, y: ny, delay: 0.1});
+        // TweenMax.to(mc.movie, 0.4, {x: mc.movie.tempX, y: mc.movie.tempY, delay: 0.4});
+    }
+}
 
 function statusNearClusterAnim() {
     renderTiles();
@@ -540,9 +602,7 @@ function statusNearClusterAnim() {
 
     movie.tempX = movie.x;
     movie.tempY = movie.y;
-    TweenMax.to(movie, 0.1, {x: newx, y: newy,onComplete:function(){
-        mc.disable = true;
-    }})
+    TweenMax.to(movie, 0.1, {x: newx, y: newy})
     TweenMax.to(movie, 0.3, {x: nx, y: ny, delay: 0.1});
     TweenMax.to(movie, 0.4, {x: movie.tempX, y: movie.tempY, delay: 0.4, ease:"power3.easeOut"});
 
@@ -574,17 +634,10 @@ function statusNearClusterAnim() {
         var nx = mc.movie.x + (-direct.x) * (Math.abs(near - 4) * 0.6);
         var ny = mc.movie.y + (-direct.y) * (Math.abs(near - 4) * 0.6);
 
-        console.log("========================================");
-        console.log("1: " + newx + "," + newy);
-        console.log("2: " + mc.movie.x + "," + mc.movie.y);
-        console.log("3: " + nx + "," + ny);
-
         mc.movie.tempX = mc.movie.x;
         mc.movie.tempY = mc.movie.y;
 
-        TweenMax.to(mc.movie, 0.1, {x: newx, y: newy, onComplete:function(){
-            mc.disable = true;
-        }})
+        TweenMax.to(mc.movie, 0.1, {x: newx, y: newy})
         TweenMax.to(mc.movie, 0.3, {x: nx, y: ny, delay: 0.1});
         TweenMax.to(mc.movie, 0.4, {x: mc.movie.tempX, y: mc.movie.tempY, delay: 0.4});
     }
@@ -777,7 +830,10 @@ function render() {
 function renderTiles() {
     for(var i=0;i<coordList.length;i++){
         if(coordList[i].movie){
-            coordList[i].disable = coordList[i].movie.disable;
+            var tile = level.tiles[coordList[i].x][coordList[i].y];
+            tile.disable = coordList[i].movie.disable;
+            tile.nx = coordList[i].movie.x;
+            tile.ny = coordList[i].movie.y;
             coordList[i].movie.parent.removeChild(coordList[i].movie);
         }
     }
@@ -794,7 +850,13 @@ function renderTiles() {
                 coord.movie = drawBubble(coord.tilex, coord.tiley + shift, tile.type);
                 tile.movie = coord.movie;
                 tile.movie.rootY = tile.movie.y;
-                if(coord.disable)coord.movie.visible = false;
+                if(tile.nx && tile.disable) {
+                    coord.movie.x = tile.nx;
+                    coord.movie.y = tile.ny;
+
+                    tile.nx = undefined;
+                    tile.ny = undefined;
+                }
                 coordList.push(coord);
             }
         }
@@ -934,7 +996,7 @@ function getTileCoordinate(column, row) {
         tilex += level.tilewidth/2;
     }
     var tiley = level.y + row * level.rowheight;
-    return { tilex: tilex, tiley: tiley };
+    return { tilex: tilex, tiley: tiley, x: column, y: row };
 }
 
 function getGridPosition(x, y) {
