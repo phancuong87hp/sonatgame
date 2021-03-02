@@ -1046,18 +1046,18 @@ function drawDot(x, y, index) {
 }
 
 function drawAnimBubble(x, y, index){
-    var bubble = this.drawBubble(x,y,index);
-    var scale = bubble.scale + 0.07;
+   // var bubble = this.drawBubble(x,y,index);
+    //var scale = bubble.scale + 0.07;
     // TweenMax.to(bubble, 0.1, {scale: scale, alpa:0, onComplete:function(){
     //     container.removeChild(bubble);
     // }})
 
-    TweenMax.to(bubble, 0.1, { alpa:0, onComplete:function(){
-        container.removeChild(bubble);
-    }})
+    // TweenMax.to(bubble, 0.1, { alpa:0, onComplete:function(){
+    //     container.removeChild(bubble);
+    // }})
 
 
-    TweenMax.delayedCall(0.08, function(){
+    // TweenMax.delayedCall(0, function(){
         var anim = getMcAnim(index);
         anim.x = x + 18;
         anim.y = y + 15;
@@ -1071,7 +1071,7 @@ function drawAnimBubble(x, y, index){
         });
         container.addChild(anim);
         anim.gotoAndPlay(0);  
-   })
+//    })
 
 }
 
