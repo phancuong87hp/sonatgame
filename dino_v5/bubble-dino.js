@@ -27,7 +27,7 @@ lib.ssMetadata = [
 
 
 
-(lib.CachedBmp_3 = function() {
+(lib.CachedBmp_1 = function() {
 	this.initialize(ss["bubble_dino_atlas_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
@@ -694,26 +694,26 @@ if (reversed == null) { reversed = false; }
 
 	// Layer_1
 	this.instance = new lib.outer_blue();
-	this.instance.setTransform(-30,-25);
+	this.instance.setTransform(-33,-27);
 
 	this.instance_1 = new lib.outer_green();
-	this.instance_1.setTransform(-30,-25);
+	this.instance_1.setTransform(-33,-27);
 
 	this.instance_2 = new lib.outer_pink();
-	this.instance_2.setTransform(-30,-25);
+	this.instance_2.setTransform(-33,-27);
 
 	this.instance_3 = new lib.outer_red();
-	this.instance_3.setTransform(-30,-25);
+	this.instance_3.setTransform(-33,-27);
 
 	this.instance_4 = new lib.outer_yellow();
-	this.instance_4.setTransform(-30,-25);
+	this.instance_4.setTransform(-33,-27);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},1).to({state:[{t:this.instance_2}]},1).to({state:[{t:this.instance_3}]},1).to({state:[{t:this.instance_4}]},1).to({state:[]},1).wait(2));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-30,-25,65,54);
+p.nominalBounds = new cjs.Rectangle(-33,-27,65,54);
 
 
 (lib.mcDot5 = function(mode,startPosition,loop,reversed) {
@@ -729,13 +729,13 @@ if (reversed == null) { reversed = false; }
 
 	// Layer_1
 	this.instance = new lib.yellow();
-	this.instance.setTransform(-9,-7,0.3,0.3);
+	this.instance.setTransform(-10,-8,0.3,0.3);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.mcDot5, new cjs.Rectangle(-9,-7,19.5,16.2), null);
+}).prototype = getMCSymbolPrototype(lib.mcDot5, new cjs.Rectangle(-10,-8,19.5,16.2), null);
 
 
 (lib.mcDot4 = function(mode,startPosition,loop,reversed) {
@@ -751,13 +751,13 @@ if (reversed == null) { reversed = false; }
 
 	// Layer_1
 	this.instance = new lib.red();
-	this.instance.setTransform(-9,-7,0.3,0.3);
+	this.instance.setTransform(-10,-8,0.3,0.3);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.mcDot4, new cjs.Rectangle(-9,-7,19.5,16.2), null);
+}).prototype = getMCSymbolPrototype(lib.mcDot4, new cjs.Rectangle(-10,-8,19.5,16.2), null);
 
 
 (lib.mcDot3 = function(mode,startPosition,loop,reversed) {
@@ -773,13 +773,13 @@ if (reversed == null) { reversed = false; }
 
 	// Layer_1
 	this.instance = new lib.pink();
-	this.instance.setTransform(-9,-7,0.3,0.3);
+	this.instance.setTransform(-10,-8,0.3,0.3);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.mcDot3, new cjs.Rectangle(-9,-7,19.5,16.2), null);
+}).prototype = getMCSymbolPrototype(lib.mcDot3, new cjs.Rectangle(-10,-8,19.5,16.2), null);
 
 
 (lib.mcDot2 = function(mode,startPosition,loop,reversed) {
@@ -795,13 +795,13 @@ if (reversed == null) { reversed = false; }
 
 	// Layer_1
 	this.instance = new lib.green();
-	this.instance.setTransform(-9,-7,0.3,0.3);
+	this.instance.setTransform(-10,-8,0.3,0.3);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.mcDot2, new cjs.Rectangle(-9,-7,19.5,16.2), null);
+}).prototype = getMCSymbolPrototype(lib.mcDot2, new cjs.Rectangle(-10,-8,19.5,16.2), null);
 
 
 (lib.mcDot1 = function(mode,startPosition,loop,reversed) {
@@ -817,13 +817,13 @@ if (reversed == null) { reversed = false; }
 
 	// Layer_1
 	this.instance = new lib.blue();
-	this.instance.setTransform(-9,-7,0.3,0.3);
+	this.instance.setTransform(-10,-8,0.3,0.3);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.mcDot1, new cjs.Rectangle(-9,-7,19.5,16.2), null);
+}).prototype = getMCSymbolPrototype(lib.mcDot1, new cjs.Rectangle(-10,-8,19.5,16.2), null);
 
 
 (lib.mcAnim5 = function(mode,startPosition,loop,reversed) {
@@ -1381,7 +1381,7 @@ if (reversed == null) { reversed = false; }
 	this.btnContinue.name = "btnContinue";
 	this.btnContinue.setTransform(161.15,265.05);
 
-	this.instance_1 = new lib.CachedBmp_3();
+	this.instance_1 = new lib.CachedBmp_1();
 	this.instance_1.setTransform(156.05,406.05,0.5,0.5);
 
 	this.instance_2 = new lib.circle();
@@ -1555,7 +1555,7 @@ lib.properties = {
 	color: "#666666",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/bubble_dino_atlas_1.png?1614481504816", id:"bubble_dino_atlas_1"}
+		{src:"images/bubble_dino_atlas_1.png?1614654211948", id:"bubble_dino_atlas_1"}
 	],
 	preloads: []
 };
