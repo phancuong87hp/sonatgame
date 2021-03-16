@@ -124,6 +124,8 @@ function showGame(_lib, _canvas, _mcGame, _mcMenu, _stage){
     mcGame.visible = true;
     mcMenu.visible = false;
     mcGame.btnInstall.addEventListener("click", openGame);   
+    mcGame.mcHand.mouseEnabled = false;
+    mcGame.mcHand.mou = false;
 
     this.mcContainer = mcGame.mcContainer;
     this.rootX = this.mcContainer.mcBlock1.x;
