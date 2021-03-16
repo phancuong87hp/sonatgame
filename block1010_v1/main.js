@@ -301,18 +301,18 @@ function nextStep() {
 }
 
 function showHand(step){
-    // mcGame.mcHand.visible = true;
-    // mcGame.mcHand.x = this.ctn.x + (this.len * this.spaceX)  / 2 * ctn.scale;
-    // mcGame.mcHand.y = this.ctn.y +  (this.lenH * this.spaceY) /2  * ctn.scale;
-    // mcGame.mcHand.rootX =  mcGame.mcHand.x;
-    // mcGame.mcHand.rootY = mcGame.mcHand.y;
+    mcGame.mcHand.visible = true;
+    mcGame.mcHand.x = this.ctn.x + (this.len * this.spaceX)  / 2 * ctn.scale;
+    mcGame.mcHand.y = this.ctn.y +  (this.lenH * this.spaceY) /2  * ctn.scale;
+    mcGame.mcHand.rootX =  mcGame.mcHand.x;
+    mcGame.mcHand.rootY = mcGame.mcHand.y;
     
-    // var mcCenter = this.posBlock[Math.floor(this.posBlock.length/2)];
-    // this.movePosX = mcCenter.x + spaceX/2;
-    // this.movePosY = mcCenter.y + spaceY/2;
-    // mcGame.mcHand.scale = 1.2;
-    // TweenMax.killAll();
-    // showAnimHand();
+    var mcCenter = this.posBlock[Math.floor(this.posBlock.length/2)];
+    this.movePosX = mcCenter.x + spaceX/2;
+    this.movePosY = mcCenter.y + spaceY/2;
+    mcGame.mcHand.scale = 1.2;
+    TweenMax.killAll();
+    showAnimHand();
     
 }
 
