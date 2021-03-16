@@ -773,8 +773,8 @@ lib.properties = {
 	color: "#666666",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/install_block.png?1615879792299", id:"install_block"},
-		{src:"images/Block1010_atlas_1.png?1615879792213", id:"Block1010_atlas_1"}
+		{src:"images/install_block.png?1615886657574", id:"install_block"},
+		{src:"images/Block1010_atlas_1.png?1615886657472", id:"Block1010_atlas_1"}
 	],
 	preloads: []
 };

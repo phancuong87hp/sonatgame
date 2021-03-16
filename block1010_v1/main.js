@@ -112,6 +112,8 @@ var level1 = {
 
 
 function showGame(_lib, _canvas, _mcGame, _mcMenu, _stage){
+    createjs.Touch.enable(_stage, false, true);
+    _stage.preventSelection = false
     this.stage = _stage;
     this.lib = _lib;
     this.canvas = _canvas;
@@ -196,15 +198,26 @@ function createChooseBlock(step){
     }
     this.ctn.y = 415 + (this.ctn.y - this.lenH/2 * spaceY) * this.ctn.scale
     
-    if(this.detectMobile()){
-        this.ctn.addEventListener("touchstart", onMouseDown.bind(this));
-    }else{
-        this.ctn.addEventListener("mousedown", onMouseDown.bind(this));
-    }
+    this.ctn.addEventListener("mousedown", onMouseDown.bind(this));
 }
 
-function dcm(e){
+function onTouchStart(e){
+    console.log("111111111111111111")
 }
+
+function onMouseDown(e){
+    this.isDownBlock = true;
+    this.ctn.rootX = this.ctn.x;
+    this.ctn.rootY = this.ctn.y;
+ 
+    this.stx = this.mcGame.globalToLocal(e.stageX, e.stageY).x;
+    this.sty = this.mcGame.globalToLocal(e.stageX, e.stageY).y;
+    this.ctn.scale = 1;
+    mcGame.mcHand.visible = false;
+    TweenMax.killAll();
+    visibleChooseBlock();
+}
+
 
 function onMouseMove(e){
     if(!this.isDownBlock) return;
@@ -236,18 +249,7 @@ function onMouseMove(e){
     }
 }
 
-function onMouseDown(e){
-   this.isDownBlock = true;
-   this.ctn.rootX = this.ctn.x;
-   this.ctn.rootY = this.ctn.y;
 
-   this.stx = this.mcGame.globalToLocal(e.stageX, e.stageY).x;
-   this.sty = this.mcGame.globalToLocal(e.stageX, e.stageY).y;
-   this.ctn.scale = 1;
-   mcGame.mcHand.visible = false;
-   TweenMax.killAll();
-   visibleChooseBlock();
-}
 
 function onMouseUp(e){
     if(!this.isDownBlock) return;
@@ -299,18 +301,18 @@ function nextStep() {
 }
 
 function showHand(step){
-    mcGame.mcHand.visible = true;
-    mcGame.mcHand.x = this.ctn.x + (this.len * this.spaceX)  / 2 * ctn.scale;
-    mcGame.mcHand.y = this.ctn.y +  (this.lenH * this.spaceY) /2  * ctn.scale;
-    mcGame.mcHand.rootX =  mcGame.mcHand.x;
-    mcGame.mcHand.rootY = mcGame.mcHand.y;
+    // mcGame.mcHand.visible = true;
+    // mcGame.mcHand.x = this.ctn.x + (this.len * this.spaceX)  / 2 * ctn.scale;
+    // mcGame.mcHand.y = this.ctn.y +  (this.lenH * this.spaceY) /2  * ctn.scale;
+    // mcGame.mcHand.rootX =  mcGame.mcHand.x;
+    // mcGame.mcHand.rootY = mcGame.mcHand.y;
     
-    var mcCenter = this.posBlock[Math.floor(this.posBlock.length/2)];
-    this.movePosX = mcCenter.x + spaceX/2;
-    this.movePosY = mcCenter.y + spaceY/2;
-    mcGame.mcHand.scale = 1.2;
-    TweenMax.killAll();
-    showAnimHand();
+    // var mcCenter = this.posBlock[Math.floor(this.posBlock.length/2)];
+    // this.movePosX = mcCenter.x + spaceX/2;
+    // this.movePosY = mcCenter.y + spaceY/2;
+    // mcGame.mcHand.scale = 1.2;
+    // TweenMax.killAll();
+    // showAnimHand();
     
 }
 
