@@ -843,11 +843,11 @@ if (reversed == null) { reversed = false; }
 	// Layer_9
 	this.txtScore = new lib.Symbol10();
 	this.txtScore.name = "txtScore";
-	this.txtScore.setTransform(273.95,62.05,0.3962,0.3962);
+	this.txtScore.setTransform(184,62.6,0.3103,0.3103,0,0,0,0,0.1);
 
 	this.txtBest = new lib.Symbol10();
 	this.txtBest.name = "txtBest";
-	this.txtBest.setTransform(137.75,26.8,0.3962,0.3962);
+	this.txtBest.setTransform(113.75,26.8,0.3168,0.3168);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.txtBest},{t:this.txtScore}]}).wait(1));
 
@@ -894,7 +894,7 @@ if (reversed == null) { reversed = false; }
 	this.instance_2.setTransform(17,58);
 
 	this.instance_3 = new lib.best();
-	this.instance_3.setTransform(17,22);
+	this.instance_3.setTransform(17,20);
 
 	this.instance_4 = new lib.score_pannel();
 	this.instance_4.setTransform(11,49,0.9866,0.7712);
@@ -961,8 +961,8 @@ lib.properties = {
 	color: "#666666",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/install_block.png?1615995546418", id:"install_block"},
-		{src:"images/Block1010_atlas_1.png?1615995546338", id:"Block1010_atlas_1"}
+		{src:"images/install_block.png?1615996359238", id:"install_block"},
+		{src:"images/Block1010_atlas_1.png?1615996359135", id:"Block1010_atlas_1"}
 	],
 	preloads: []
 };

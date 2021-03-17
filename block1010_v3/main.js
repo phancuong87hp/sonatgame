@@ -491,10 +491,10 @@ function showGame(_lib, _canvas, _mcGame, _mcMenu, _stage){
     this.mcGame.txtBest.m3.gotoAndStop(9);
     this.mcGame.txtBest.m4.gotoAndStop(9);
 
-    this.mcGame.txtScore.m1.gotoAndStop(0);
-    this.mcGame.txtScore.m2.gotoAndStop(0);
-    this.mcGame.txtScore.m3.gotoAndStop(0);
-    this.mcGame.txtScore.m4.gotoAndStop(0);
+    this.setNum(this.mcGame.txtScore.m1, 0, true);
+    this.setNum(this.mcGame.txtScore.m2, 0, true);
+    this.setNum(this.mcGame.txtScore.m3, 0, true);
+    this.setNum(this.mcGame.txtScore.m4, 0, false);
 
     setInterval(this.tick, 10);
 }
@@ -507,10 +507,21 @@ function tick(){
         else if(s.length < 3) s = "00" + s;
         else if(s.length < 4) s = "0" + s;
 
-        this.mcGame.txtScore.m1.gotoAndStop(parseInt(s[0]));
-        this.mcGame.txtScore.m2.gotoAndStop(parseInt(s[1]));
-        this.mcGame.txtScore.m3.gotoAndStop(parseInt(s[2]));
-        this.mcGame.txtScore.m4.gotoAndStop(parseInt(s[3]));
+        this.setNum(this.mcGame.txtScore.m1, parseInt(s[0]), true);
+        this.setNum(this.mcGame.txtScore.m2, parseInt(s[1]), true);
+        this.setNum(this.mcGame.txtScore.m3, parseInt(s[2]), true);
+        this.setNum(this.mcGame.txtScore.m4, parseInt(s[3]), false);
+       
+
+        if(s[0] === '0') this.mcGame.txtScore.m1.vi
+    }
+}
+
+function setNum(mc, num, isCheck){
+    if(num === 0 && isCheck) mc.visible = false;
+    else{
+        mc.visible = true;
+        mc.gotoAndStop(num);
     }
 }
 
